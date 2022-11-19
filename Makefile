@@ -1,6 +1,7 @@
 VERSION=0.0.15
 EMACS = emacs
-PREFIX = /usr/local
+PREFIX = $(shell $(EMACS) -Q --batch --eval \
+	 "(princ (expand-file-name \"../../../..\" data-directory))")
 INSTALLLIBDIR = $(PREFIX)/share/emacs/site-lisp
 FLAGS = -batch -L $(INSTALLLIBDIR) -q -f batch-byte-compile
 SRC = yaml-mode.el
